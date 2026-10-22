@@ -122,7 +122,7 @@ aerolisa/
 git clone https://github.com/xdmanflow/aerolisa.git
 cd aerolisa
 python -m venv .venv && source .venv/bin/activate
-make install          # installs AeroLisa with dev tools
+make install          # installs Aerolisa with dev tools
 make test             # runs the test suite
 cp .env.example .env  # local settings; never commit .env
 make up               # starts PostgreSQL (more services added per release)
@@ -158,7 +158,7 @@ _Metrics, screenshots and the demo video will be added at each release. No resul
 
 ## Learning companion
 
-AeroLisa is the applied side of **[Renaissance Project](https://github.com/xdmanflow/renaissance-project)**, my public one-year learning plan in mathematics, computer science, data and AI. What I learn each weekend there is applied here.
+Aerolisa is the applied side of **[Renaissance Project](https://github.com/xdmanflow/renaissance-project)**, my public one-year learning plan in mathematics, computer science, data and AI. What I learn each weekend there is applied here.
 
 ## Author
 
