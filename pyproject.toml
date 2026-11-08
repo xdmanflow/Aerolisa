@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aerolisa"
+version = "0.0.1"
+description = "Fleet health intelligence on an aviation ontology: pipelines, predictive maintenance, planner and copilot, built on public data."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Manil DOUDOU" }]
+keywords = [
+    "aviation",
+    "predictive-maintenance",
+    "ontology",
+    "palantir-foundry",
+    "pyspark",
+    "data-engineering",
+    "machine-learning",
+]
+dependencies = []
+
+[project.optional-dependencies]
+# Install only what the current milestone needs, e.g. pip install -e ".[data,app,dev]"
+core = ["pydantic>=2", "pyyaml", "python-dotenv"]
+data = ["pandas>=2", "pyarrow", "duckdb"]
+spark = ["pyspark>=3.5"]
+quality = ["pandera"]
+ml = ["scikit-learn", "lightgbm", "xgboost", "lifelines", "shap", "mlflow", "matplotlib"]
+dl = ["torch"]
+fleet = ["requests"]
+app = ["streamlit", "plotly"]
+api = ["fastapi", "uvicorn[standard]", "httpx"]
+copilot = ["chromadb", "pypdf", "rank-bm25"]
+dev = ["pytest>=8", "pytest-cov", "ruff", "pre-commit"]
+
+# Enable when the CLI exists (milestone M2):
+# [project.scripts]
+# aerolisa = "aerolisa.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

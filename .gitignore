@@ -8,6 +8,7 @@ dist/
 venv/
 .pytest_cache/
 .ruff_cache/
+.coverage
 .ipynb_checkpoints/
 # Secrets
 .env
@@ -17,13 +18,15 @@ data/
 *.parquet
 *.duckdb
 *.csv
-!**/work/**/sample_*.csv
+!sample_data/**/*.csv
 # Models, runs, logs
 mlruns/
+mlflow/
 models/
 logs/
 spark-warehouse/
 metastore_db/
+chroma/
 # Editors / OS
 .vscode/
 .idea/

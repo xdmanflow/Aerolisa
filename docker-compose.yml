@@ -1,0 +1,15 @@
+# Aerolisa local stack. Services are added milestone by milestone.
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.16.2
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root /mlflow/artifacts
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow:/mlflow
+
+  # M9: api (build: infra/Dockerfile.api), app (build: infra/Dockerfile.app)
+  # M9 🚀: airflow (optional)
+
+volumes:
+  mlflow:

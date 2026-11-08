@@ -1,4 +1,4 @@
-name: Exercises
+name: CI
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,7 +14,11 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-      - run: pip install -r requirements.txt
-      - name: Run exercise tests
-        # exit code 5 = no tests collected yet, which is fine early on
-        run: pytest -q || [ $? -eq 5 ]
+      - name: Install
+        run: pip install -e ".[core,data,dev]"
+      - name: Lint
+        run: |
+          ruff check .
+          ruff format --check .
+      - name: Test
+        run: pytest -q
