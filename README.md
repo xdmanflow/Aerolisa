@@ -1,7 +1,5 @@
 # Aerolisa: fleet health intelligence on an aviation ontology
 
-[![CI](https://github.com/xdmanflow/Aerolisa/actions/workflows/ci.yml/badge.svg)](https://github.com/xdmanflow/Aerolisa/actions/workflows/ci.yml)
-
 > **Which engines in this fleet should we inspect first, why, and what happens if we wait?**
 >
 > Aerolisa answers that question end to end: ingestion pipelines, an aviation ontology, predictive maintenance models with uncertainty, real flight cycles from ADS-B, an operational app where planners take action, and an AI copilot that cites its sources. It is built twice: locally in open-source Python, and on **Palantir Foundry** (the platform behind Airbus Skywise).
