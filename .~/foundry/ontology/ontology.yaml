@@ -1,0 +1,213 @@
+# Aerolisa ontology v1: predictive maintenance & health monitoring slice.
+# Configure each object type in Ontology Manager exactly as written here
+# (build guide steps 9-11). tests/test_ontology_contract.py checks that every
+# property's column exists in the local twin's backing dataset.
+#
+# Other use cases extend THIS ontology (docs/use-cases.md): Aircraft is the hub.
+
+object_types:
+  Operator:
+    api_name: operator
+    backing_dataset: objects/operator
+    primary_key: operatorCode
+    title: operatorName
+    properties:
+      operatorCode: {column: operator_code, type: string}
+      operatorName: {column: operator_name, type: string}
+      fleetSize: {column: fleet_size, type: integer}
+      simulated: {column: simulated, type: boolean}
+
+  Aircraft:
+    api_name: aircraft
+    backing_dataset: objects/aircraft
+    primary_key: tailId
+    title: registration
+    properties:
+      tailId: {column: tail_id, type: string}
+      registration: {column: registration, type: string}
+      operatorCode: {column: operator_code, type: string}
+      typecode: {column: typecode, type: string}
+      model: {column: model, type: string}
+      family: {column: family, type: string}
+      homeBaseIcao: {column: home_base_icao, type: string}
+      nextCheckDate: {column: next_check_date, type: date}
+      cyclesPerDay: {column: cycles_per_day, type: double}
+      cyclesPerDayLo: {column: cycles_per_day_lo, type: double}
+      cyclesPerDayHi: {column: cycles_per_day_hi, type: double}
+      worstEngineRisk: {column: worst_engine_risk, type: double}
+      enginesInRed: {column: engines_in_red, type: integer}
+      simulated: {column: simulated, type: boolean}
+
+  Engine:
+    api_name: engine
+    backing_dataset: objects/engine
+    primary_key: engineId
+    title: engineId
+    properties:
+      engineId: {column: engine_id, type: string}
+      tailId: {column: tail_id, type: string}
+      position: {column: position, type: integer}
+      engineModel: {column: engine_model, type: string}
+      currentCycle: {column: current_cycle, type: integer}
+      rank: {column: rank, type: integer}
+      band: {column: band, type: string}              # RED / AMBER / GREEN -> conditional formatting
+      alert: {column: alert, type: boolean}
+      riskBeforeCheck: {column: risk_before_check, type: double}
+      rulP10: {column: rul_p10, type: double}
+      rulP50: {column: rul_p50, type: double}
+      rulP90: {column: rul_p90, type: double}
+      healthIndex: {column: health_index, type: double}
+      anomalyScore: {column: anomaly_score, type: double}
+      topDrivers: {column: top_drivers, type: string}
+      modelVersion: {column: model_version, type: string}
+      simulated: {column: simulated, type: boolean}
+
+  EngineHealthSnapshot:
+    api_name: engineHealthSnapshot
+    backing_dataset: gold/engine_health_snapshot
+    primary_key: snapshotId
+    title: snapshotId
+    properties:
+      snapshotId: {column: snapshot_id, type: string}
+      engineId: {column: engine_id, type: string}
+      cycle: {column: cycle, type: integer}
+      rulP10: {column: rul_p10, type: double}
+      rulP50: {column: rul_p50, type: double}
+      rulP90: {column: rul_p90, type: double}
+      healthIndex: {column: health_index, type: double}
+      anomalyScore: {column: anomaly_score, type: double}
+      topDrivers: {column: top_drivers, type: string}
+      alert: {column: alert, type: boolean}
+      isLatest: {column: is_latest, type: boolean}
+      ps30Mean: {column: sensor_11_mean, type: double}
+      t50Mean: {column: sensor_4_mean, type: double}
+      ncMean: {column: sensor_9_mean, type: double}
+      p30Mean: {column: sensor_7_mean, type: double}
+      rulTruthSimulationOnly: {column: rul_truth_simulation_only, type: integer}   # hide in the operational app
+      modelVersion: {column: model_version, type: string}
+
+  InspectionRecommendation:
+    api_name: inspectionRecommendation
+    backing_dataset: gold/inspection_recommendation
+    primary_key: recommendationId
+    title: engineId
+    edits: true                      # status is edited by actions
+    properties:
+      recommendationId: {column: recommendation_id, type: string}
+      engineId: {column: engine_id, type: string}
+      tailId: {column: tail_id, type: string}
+      position: {column: position, type: integer}
+      rank: {column: rank, type: integer}
+      band: {column: band, type: string}
+      alert: {column: alert, type: boolean}
+      riskBeforeCheck: {column: risk_before_check, type: double}
+      rulP10: {column: rul_p10, type: double}
+      rulP50: {column: rul_p50, type: double}
+      rulP90: {column: rul_p90, type: double}
+      cyclesPerDay: {column: cycles_per_day, type: double}
+      daysP10: {column: days_p10, type: double}
+      daysP50: {column: days_p50, type: double}
+      daysToNextCheck: {column: days_to_next_check, type: integer}
+      nextCheckDate: {column: next_check_date, type: date}
+      anomalyScore: {column: anomaly_score, type: double}
+      healthIndex: {column: health_index, type: double}
+      topDrivers: {column: top_drivers, type: string}
+      reason: {column: reason, type: string}
+      status: {column: status, type: string}       # OPEN / ACKNOWLEDGED / SCHEDULED
+      createdAt: {column: created_at, type: date}
+      modelVersion: {column: model_version, type: string}
+
+  WorkOrder:
+    api_name: workOrder
+    backing_dataset: writeback/work_orders
+    primary_key: workOrderId
+    title: workOrderId
+    edits: true                      # created by ScheduleInspection
+    properties:
+      workOrderId: {column: work_order_id, type: string}
+      engineId: {column: engine_id, type: string}
+      recommendationId: {column: recommendation_id, type: string}
+      workType: {column: work_type, type: string}
+      plannedDate: {column: planned_date, type: string}
+      status: {column: status, type: string}       # PLANNED / CLOSED
+      comment: {column: comment, type: string}
+      createdBy: {column: created_by, type: string}
+      createdAt: {column: created_at, type: string}
+      closedAt: {column: closed_at, type: string}
+      finding: {column: finding, type: string}     # DEGRADATION_CONFIRMED / NO_FINDING / OTHER_DEFECT
+
+  UtilizationDay:
+    api_name: utilizationDay
+    backing_dataset: gold/aircraft_utilization_daily
+    primary_key: utilizationId
+    title: utilizationId
+    properties:
+      utilizationId: {column: utilization_id, type: string}
+      tailId: {column: tail_id, type: string}
+      date: {column: date, type: date}
+      cycles: {column: cycles, type: integer}
+      blockHours: {column: block_hours, type: double}
+      simulated: {column: simulated, type: boolean}
+
+  EngineLifeRecord:
+    api_name: engineLifeRecord
+    backing_dataset: gold/engine_life_records
+    primary_key: engineId
+    title: engineId
+    properties:
+      engineId: {column: engine_id, type: string}
+      observedCycles: {column: observed_cycles, type: integer}
+      failed: {column: failed, type: boolean}
+      role: {column: role, type: string}
+
+  ModelVersion:
+    api_name: modelVersion
+    backing_dataset: gold/engine_health_model_metrics
+    primary_key: modelVersion
+    title: modelVersion
+    properties:
+      modelVersion: {column: model_version, type: string}
+      trainedAt: {column: trained_at, type: string}
+      testRmse: {column: test_rmse, type: double}
+      testRmseCritical: {column: test_rmse_critical, type: double}
+      testNasaScore: {column: test_nasa_score, type: double}
+      testIntervalCoverage: {column: test_interval_coverage, type: double}
+      alertThresholdCycles: {column: alert_threshold_cycles, type: integer}
+      metricsJson: {column: metrics_json, type: string}
+
+link_types:
+  - {name: operatorAircraft, from: Operator, to: Aircraft, cardinality: one-to-many, foreign_key: Aircraft.operatorCode}
+  - {name: aircraftEngines, from: Aircraft, to: Engine, cardinality: one-to-many, foreign_key: Engine.tailId}
+  - {name: aircraftUtilization, from: Aircraft, to: UtilizationDay, cardinality: one-to-many, foreign_key: UtilizationDay.tailId}
+  - {name: engineSnapshots, from: Engine, to: EngineHealthSnapshot, cardinality: one-to-many, foreign_key: EngineHealthSnapshot.engineId}
+  - {name: engineRecommendations, from: Engine, to: InspectionRecommendation, cardinality: one-to-many, foreign_key: InspectionRecommendation.engineId}
+  - {name: engineWorkOrders, from: Engine, to: WorkOrder, cardinality: one-to-many, foreign_key: WorkOrder.engineId}
+  - {name: recommendationWorkOrders, from: InspectionRecommendation, to: WorkOrder, cardinality: one-to-many, foreign_key: WorkOrder.recommendationId}
+  - {name: engineModelVersion, from: ModelVersion, to: Engine, cardinality: one-to-many, foreign_key: Engine.modelVersion}
+
+action_types:
+  ScheduleInspection:
+    backed_by: function AerolisaFunctions.scheduleInspection
+    parameters:
+      rec: {type: InspectionRecommendation, required: true}
+      plannedDate: {type: date, required: true}
+      workType: {type: string, required: true, allowed: [BORESCOPE, TREND_REVIEW, ENGINE_REMOVAL]}
+      createdBy: {type: string, required: true, default: current user}
+      comment: {type: string, required: false}
+    submission_criteria:
+      - plannedDate is on or after today
+      - rec.status is OPEN or ACKNOWLEDGED
+      - user is in group "aerolisa-planners"
+    effect: creates WorkOrder (PLANNED); sets InspectionRecommendation.status = SCHEDULED
+  AcknowledgeRecommendation:
+    backed_by: function AerolisaFunctions.acknowledgeRecommendation
+    parameters:
+      rec: {type: InspectionRecommendation, required: true}
+      comment: {type: string, required: true}
+    effect: sets status = ACKNOWLEDGED
+  CloseWorkOrder:
+    backed_by: function AerolisaFunctions.closeWorkOrder
+    parameters:
+      wo: {type: WorkOrder, required: true}
+      finding: {type: string, required: true, allowed: [DEGRADATION_CONFIRMED, NO_FINDING, OTHER_DEFECT]}
+    effect: status = CLOSED, finding recorded (labels for the next model version)

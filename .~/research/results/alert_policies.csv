@@ -1,0 +1,7 @@
+policy,cost_ratio_fn_fp,threshold_cycles,test_tp,test_fp,test_fn,test_recall,test_precision,test_cost
+rul_p10,5,25,25,2,0,1.0,0.926,2
+rul_p50,5,31,22,0,3,0.88,1.0,15
+rul_p10,10,25,25,2,0,1.0,0.926,2
+rul_p50,10,31,22,0,3,0.88,1.0,30
+rul_p10,20,25,25,2,0,1.0,0.926,2
+rul_p50,20,31,22,0,3,0.88,1.0,60

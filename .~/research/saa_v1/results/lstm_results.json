@@ -1,0 +1,7 @@
+{
+  "val_rmse": 12.44,
+  "test_rmse": 15.41,
+  "test_nasa_score": 423.3,
+  "train_time_s": 219.37,
+  "epochs_trained": 21
+}

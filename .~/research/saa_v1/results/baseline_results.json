@@ -1,0 +1,20 @@
+{
+  "Linear Regression": {
+    "val_rmse": 20.21,
+    "test_rmse": 21.88,
+    "test_nasa_score": 1307.6,
+    "train_time_s": 0.01
+  },
+  "Random Forest": {
+    "val_rmse": 17.01,
+    "test_rmse": 18.08,
+    "test_nasa_score": 912.6,
+    "train_time_s": 28.68
+  },
+  "Gradient Boosting": {
+    "val_rmse": 17.0,
+    "test_rmse": 18.37,
+    "test_nasa_score": 1047.7,
+    "train_time_s": 13.72
+  }
+}
