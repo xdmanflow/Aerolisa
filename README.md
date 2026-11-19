@@ -1,4 +1,4 @@
-# Aerolisa: data & AI for aerospace operations, on a Palantir Foundry ontology
+# Aerolisa: Data & AI System for Aerospace Operations
 
 > **Which engines in this fleet should we inspect first, why, and what happens if we wait?**
 >
