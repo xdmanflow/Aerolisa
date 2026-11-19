@@ -12,9 +12,6 @@
 > **Aerolisa** (a Skywise-style fleet-health platform). The predictive-maintenance slice is
 > finished; nine more aerospace & defence use cases are designed on the same ontology.
 
-Independent personal project on public data only. Not affiliated with, endorsed by, or connected to
-Airbus, Skywise or Palantir. Engines are NASA C-MAPSS simulations; the fleet is simulated and labelled as such.
-
 ![Inspection queue](research/figures/fig16_fleet_risk.png)
 
 ## Results (NASA C-MAPSS FD001, 100 test engines, last cycle each)
