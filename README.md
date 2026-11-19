@@ -1,4 +1,4 @@
-# Aerolisa: Data & AI System for Aerospace Operations
+# Aerolisa: The Data & AI System for Aerospace Operations
 
 > **Which engines in this fleet should we inspect first, why, and what happens if we wait?**
 >
