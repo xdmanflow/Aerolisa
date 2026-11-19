@@ -65,14 +65,14 @@ flowchart LR
 | Domain | Use case | Status |
 |---|---|---|
 | Operations & MRO | Predictive maintenance & health monitoring | built & finished |
-| Operations & MRO | Automated visual inspection | designed |
-| Operations & MRO | Technical documentation copilot (RAG) | designed |
-| Flight efficiency | Route & fuel optimisation | designed |
-| Flight efficiency | Air & space traffic management | designed |
-| Sustainability | Decarbonisation & emissions | designed |
-| Engineering | Generative design & surrogates | designed |
-| Supply chain | Predictive supply-chain resilience | designed |
-| Safety & autonomy | Autonomous flight & cockpit assistance | designed |
+| Operations & MRO | Automated visual inspection | not yet but designed |
+| Operations & MRO | Technical documentation copilot (RAG) | not yet but designed |
+| Flight efficiency | Route & fuel optimisation | not yet but designed |
+| Flight efficiency | Air & space traffic management | not yet but designed |
+| Sustainability | Decarbonisation & emissions | not yet but designed |
+| Engineering | Generative design & surrogates | not yet but designed |
+| Supply chain | Predictive supply-chain resilience | not yet but designed |
+| Safety & autonomy | Autonomous flight & cockpit assistance | not yet but designed |
 | Safety & autonomy | Explainable AI & certification readiness | partly built in PdM |
 
 Designs, data sources and ontology extensions: [docs/use-cases.md](docs/use-cases.md).
