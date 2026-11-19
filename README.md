@@ -6,8 +6,9 @@
 > remaining-useful-life model **with calibrated uncertainty**, label-free health monitoring,
 > a cost-based alert, a risk-ranked inspection queue that converts cycles into days using each
 > aircraft's utilisation, actions that write decisions back, and an AIP explanation that cites
-> only ontology data. It is built for **Palantir Foundry** (the platform behind Airbus Skywise),
+> only ontology data. It is built for **Palantir Foundry**,
 > with a tested local twin that runs on a laptop.
+> 
 ![Inspection queue](research/figures/fig16_fleet_risk.png)
 
 ## Results (NASA C-MAPSS FD001, 100 test engines, last cycle each)
