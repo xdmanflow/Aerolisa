@@ -8,10 +8,6 @@
 > aircraft's utilisation, actions that write decisions back, and an AIP explanation that cites
 > only ontology data. It is built for **Palantir Foundry** (the platform behind Airbus Skywise),
 > with a tested local twin that runs on a laptop.
-> It merges two projects: **Turbofan-RUL** (my CESI scientific research on NASA C-MAPSS) and
-> **Aerolisa** (a Skywise-style fleet-health platform). The predictive-maintenance slice is
-> finished; nine more aerospace & defence use cases are designed on the same ontology.
-
 ![Inspection queue](research/figures/fig16_fleet_risk.png)
 
 ## Results (NASA C-MAPSS FD001, 100 test engines, last cycle each)
