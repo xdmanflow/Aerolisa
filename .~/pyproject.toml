@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aerolisa"
+version = "1.0.0"
+description = "Data & AI for aerospace operations on an aviation ontology: predictive maintenance first, built for Palantir Foundry."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Manil DOUDOU" }]
+dependencies = ["numpy>=1.26", "pandas>=2.1", "scikit-learn>=1.4", "scipy>=1.11"]
+
+[project.optional-dependencies]
+research = ["matplotlib>=3.8"]
+dev = ["pytest>=8", "ruff", "pyyaml"]
+
+[project.scripts]
+aerolisa = "aerolisa.cli.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+extend-exclude = ["research/saa_v1"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]

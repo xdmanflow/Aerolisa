@@ -1,0 +1,3 @@
+zone,n_engines,RF_rmse,GB_rmse,LSTM_rmse
+Critical (RUL < 50),30,16.47,16.49,6.14
+Non-critical (RUL >= 50),70,18.73,19.13,17.98

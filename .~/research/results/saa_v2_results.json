@@ -1,0 +1,188 @@
+{
+  "data": {
+    "train_rows": 20631,
+    "test_rows": 13096,
+    "train_engines_fit": 80,
+    "val_engines": [
+      1,
+      5,
+      11,
+      13,
+      19,
+      23,
+      31,
+      32,
+      34,
+      40,
+      45,
+      46,
+      54,
+      71,
+      74,
+      77,
+      78,
+      81,
+      84,
+      91
+    ],
+    "test_engines": 100,
+    "test_critical_engines": 30,
+    "test_alert_positives_rul_le_30": 25,
+    "val_truncation_samples": 200,
+    "lifetime_min": 128,
+    "lifetime_max": 362,
+    "lifetime_mean": 206.3
+  },
+  "reproduction": {
+    "Linear Regression": {
+      "v1_test_rmse": 21.88,
+      "v2_test_rmse": 21.88,
+      "v1_nasa": 1307.6,
+      "v2_nasa": 1307.6
+    },
+    "Random Forest": {
+      "v1_test_rmse": 18.08,
+      "v2_test_rmse": 18.09,
+      "v1_nasa": 912.6,
+      "v2_nasa": 914.7
+    },
+    "Gradient Boosting": {
+      "v1_test_rmse": 18.37,
+      "v2_test_rmse": 18.37,
+      "v1_nasa": 1047.7,
+      "v2_nasa": 1047.7
+    }
+  },
+  "interval": {
+    "alpha": 0.2,
+    "nominal_coverage": 0.8,
+    "q_hat_cycles": 4.01,
+    "test_coverage_uncalibrated": 0.64,
+    "test_coverage_calibrated": 0.81,
+    "test_coverage_calibrated_critical": 0.933,
+    "test_mean_width_uncalibrated": 24.2,
+    "test_mean_width_calibrated": 32.2,
+    "test_mean_width_critical": 19.7,
+    "test_p50_rmse": 13.98,
+    "test_p50_rmse_critical": 5.69,
+    "test_share_true_below_p10": 0.15,
+    "test_share_true_above_p90": 0.04,
+    "val_trunc_coverage": 0.81
+  },
+  "health": {
+    "hi_spearman_vs_rul": 0.778,
+    "auc_anomaly_critical_vs_healthy": 0.987,
+    "auc_health_index_critical_vs_healthy": 0.982,
+    "sustained_alarm_engines": 20,
+    "val_engines": 20,
+    "median_alarm_lead_cycles": 38.5,
+    "min_alarm_lead_cycles": 22,
+    "max_alarm_lead_cycles": 88,
+    "alarms_while_healthy_engines": 0,
+    "healthy_cycle_alarm_rate": 0.0135,
+    "pca_explained_variance": 0.706
+  },
+  "reliability": {
+    "beta": 4.41,
+    "eta": 225.0,
+    "b10": 135.1,
+    "mttf": 205.1,
+    "ks_pvalue": 0.013,
+    "n": 100
+  },
+  "alert": {
+    "rul_p10|5": {
+      "policy": "rul_p10",
+      "cost_ratio_fn_fp": 5,
+      "threshold_cycles": 25,
+      "test_tp": 25,
+      "test_fp": 2,
+      "test_fn": 0,
+      "test_recall": 1.0,
+      "test_precision": 0.926,
+      "test_cost": 2
+    },
+    "rul_p50|5": {
+      "policy": "rul_p50",
+      "cost_ratio_fn_fp": 5,
+      "threshold_cycles": 31,
+      "test_tp": 22,
+      "test_fp": 0,
+      "test_fn": 3,
+      "test_recall": 0.88,
+      "test_precision": 1.0,
+      "test_cost": 15
+    },
+    "rul_p10|10": {
+      "policy": "rul_p10",
+      "cost_ratio_fn_fp": 10,
+      "threshold_cycles": 25,
+      "test_tp": 25,
+      "test_fp": 2,
+      "test_fn": 0,
+      "test_recall": 1.0,
+      "test_precision": 0.926,
+      "test_cost": 2
+    },
+    "rul_p50|10": {
+      "policy": "rul_p50",
+      "cost_ratio_fn_fp": 10,
+      "threshold_cycles": 31,
+      "test_tp": 22,
+      "test_fp": 0,
+      "test_fn": 3,
+      "test_recall": 0.88,
+      "test_precision": 1.0,
+      "test_cost": 30
+    },
+    "rul_p10|20": {
+      "policy": "rul_p10",
+      "cost_ratio_fn_fp": 20,
+      "threshold_cycles": 25,
+      "test_tp": 25,
+      "test_fp": 2,
+      "test_fn": 0,
+      "test_recall": 1.0,
+      "test_precision": 0.926,
+      "test_cost": 2
+    },
+    "rul_p50|20": {
+      "policy": "rul_p50",
+      "cost_ratio_fn_fp": 20,
+      "threshold_cycles": 31,
+      "test_tp": 22,
+      "test_fp": 0,
+      "test_fn": 3,
+      "test_recall": 0.88,
+      "test_precision": 1.0,
+      "test_cost": 60
+    }
+  },
+  "fleet": {
+    "alert_threshold_cycles": 25,
+    "bands": {
+      "GREEN": 54,
+      "RED": 34,
+      "AMBER": 12
+    },
+    "engines_failing_before_check_truth": 31,
+    "of_which_red": 28,
+    "of_which_amber": 2,
+    "of_which_green": 1,
+    "red_engines_not_failing_before_check": 6,
+    "aircraft": 50,
+    "mean_cycles_per_day": 4.81
+  },
+  "importance_top5": {
+    "cycle": 3.84,
+    "sensor_3": 1.84,
+    "sensor_17": 0.87,
+    "sensor_2": 0.8,
+    "sensor_7": 0.58
+  },
+  "importance_joint": {
+    "all_sensor_features": 40.33,
+    "cycle_only": 3.59
+  },
+  "runtime_s": 102.4
+}

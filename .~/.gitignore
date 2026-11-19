@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+.ipynb_checkpoints/
+# Secrets
+.env
+credentials.json
+# Generated data (rebuild with `make build`); raw NASA C-MAPSS FD001 is committed (public, 5.6 MB)
+data/*
+!data/raw/
+data/raw/*
+!data/raw/cmapss/
+*.parquet
+# Foundry / Spark local artefacts
+spark-warehouse/
+metastore_db/
+node_modules/
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

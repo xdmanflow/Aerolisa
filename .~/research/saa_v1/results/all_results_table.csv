@@ -1,0 +1,5 @@
+,val_rmse,test_rmse,test_nasa_score,train_time_s
+Linear Regression,20.21,21.88,1307.6,0.01
+Random Forest,17.01,18.08,912.6,28.68
+Gradient Boosting,17.0,18.37,1047.7,13.72
+LSTM,12.44,15.41,423.3,219.37

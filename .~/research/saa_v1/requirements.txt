@@ -1,0 +1,7 @@
+   pandas==3.0.2
+   numpy==2.4.4
+   scikit-learn==1.8.0
+   tensorflow-cpu==2.21.0
+   matplotlib
+   joblib
+   pyarrow
