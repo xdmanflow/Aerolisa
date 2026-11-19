@@ -1,6 +1,6 @@
 # Aerolisa: The Data & AI System for Aerospace Operations
 
-> **Predictive maintenance & health monitoring : Which engines in this fleet should we inspect first, why, and what happens if we wait?**
+> **Predictive maintenance : Which engines in this fleet should we inspect first, why, and what happens if we wait?**
 >
 > Aerolisa answers that question end to end: PySpark pipelines, an aviation ontology, a
 > remaining-useful-life model **with calibrated uncertainty**, label-free health monitoring,
